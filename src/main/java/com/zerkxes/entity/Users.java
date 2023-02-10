@@ -1,13 +1,16 @@
 package com.zerkxes.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Users {
-	enum role {
+	public enum role {
 		Student, Teacher, Librarian
 	};
 
@@ -15,9 +18,15 @@ public class Users {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	@Column(unique=true)
 	private String u_name;
 	private String pswrd;
+	@Enumerated(EnumType.STRING)
 	private role type;
+
+	public Users() {
+
+	}
 
 	public Users(int id, String name, String u_name, String pswrd, role type) {
 		super();
