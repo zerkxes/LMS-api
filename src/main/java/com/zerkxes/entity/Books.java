@@ -16,16 +16,22 @@ public class Books {
 	private int id;
 	private String name;
 	private String u_name;
+	private String owner;
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date b_date;
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date r_date;
 
-	public Books(int id, String name, String u_name, Date b_date, Date r_date) {
+	public Books() {
+
+	}
+
+	public Books(int id, String name, String u_name, Date b_date, Date r_date, String owner) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.u_name = u_name;
+		this.owner = owner;
 		this.b_date = b_date;
 		this.r_date = r_date;
 	}
@@ -70,9 +76,17 @@ public class Books {
 		this.r_date = r_date;
 	}
 
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
 	@Override
 	public String toString() {
-		return "Books [id=" + id + ", name=" + name + ", u_name=" + u_name + ", b_date=" + b_date + ", r_date=" + r_date
+		return "Books [id=" + id + ", name=" + name + ", u_name=" + u_name + ", owner=" + owner + ", b_date=" + b_date + ", r_date=" + r_date
 				+ "]";
 	}
 }
