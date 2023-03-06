@@ -23,18 +23,21 @@ public class Users {
 	private String pswrd;
 	@Enumerated(EnumType.STRING)
 	private role type;
+	@Column(name="owner", nullable = true)
+	private String z_owner;
 
 	public Users() {
 
 	}
 
-	public Users(int id, String name, String u_name, String pswrd, role type) {
+	public Users(int id, String name, String u_name, String pswrd, role type, String z_owner) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.u_name = u_name;
 		this.pswrd = pswrd;
 		this.type = type;
+		this.z_owner=z_owner;
 	}
 
 	public int getId() {
@@ -77,9 +80,19 @@ public class Users {
 		this.type = type;
 	}
 
+	public String getZ_owner() {
+		return z_owner;
+	}
+
+	public void setZ_owner(String z_owner) {
+		this.z_owner = z_owner;
+	}
+
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", name=" + name + ", u_name=" + u_name + ", pswrd=" + pswrd + ", type=" + type
-				+ "]";
+				+ ", z_owner=" + z_owner + "]";
 	}
+
+	
 }

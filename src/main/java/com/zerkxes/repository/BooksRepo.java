@@ -18,17 +18,17 @@ public class BooksRepo {
 	private String insertBook = "insert into BOOKS values(?,?,?,?,?,?)";
 	private String listAllBooks = "select * from BOOKS where owner=?";
 	private String findBookById = "select * from BOOKS where id=? and owner=?";
-	private String updateBookById = "update BOOKS set name=?, u_name=?, owner=?, b_date=?, r_date=? where id=?";
+	private String updateBookById = "update BOOKS set b_date=?, name=?, owner=?, r_date=?, u_name=? where id=?";
 	private String deleteBookById = "delete from BOOKS where id=?";
 
 	public Books createBook(Books book) {
-		repo.update(insertBook, book.getId(), book.getName(), book.getU_name(), book.getOwner(), book.getB_date(),
-				book.getR_date());
+		repo.update(insertBook, book.getId(),book.getB_date(), book.getName(),  book.getOwner(),book.getR_date(),
+				book.getU_name());
 		return book;
 	}
 
 	public List<Books> listAllBooks(String owner) {
-		return repo.query(listAllBooks, new BeanPropertyRowMapper<>(Books.class));
+		return repo.query(listAllBooks, new BeanPropertyRowMapper<>(Books.class), owner);
 	}
 
 	public Books findBookById(int id, String owner) {
@@ -36,8 +36,8 @@ public class BooksRepo {
 	}
 
 	public Books updateBookById(Books book, int id) {
-		repo.update(updateBookById, book.getName(), book.getU_name(), book.getOwner(), book.getB_date(),
-				book.getR_date(), id);
+		repo.update(updateBookById, book.getB_date(), book.getName(),  book.getOwner(),book.getR_date(),
+				book.getU_name(), id);
 		return book;
 	}
 

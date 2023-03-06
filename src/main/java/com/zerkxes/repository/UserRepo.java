@@ -27,11 +27,13 @@ public class UserRepo {
 		existing.setPswrd(user.getPswrd());
 		existing.setType(user.getType());
 		existing.setU_name(user.getU_name());
+		existing.setZ_owner(user.getZ_owner());
 		eMan.merge(existing);
 	}
 
-	public List<Users> listAllUsers() {
-		return (List<Users>) eMan.createQuery("select * from USERS", Users.class);
+	public List<Users> listAllUsers(String owner) {
+		return eMan.createQuery("select u from Users u where u.z_owner = :owner", Users.class).setParameter("owner", owner)
+				.getResultList();
 	}
 
 	public Users findById(int id) {
@@ -39,14 +41,14 @@ public class UserRepo {
 	}
 
 	public Users findByUserName(String u_name) {
-		String query = "select id from USERS where u_name=:u_name";
-		Users found = (Users) eMan.createQuery(query, Users.class).setParameter("u_name", u_name).getSingleResult();
+		String query = "select u from Users u where u.u_name = :userName";
+		Users found = eMan.createQuery(query, Users.class).setParameter("userName", u_name).getSingleResult();
 		return found;
 	}
 
 	public Users deleteById(int id) {
 		Users x = findById(id);
-		eMan.remove(id);
+		eMan.remove(x);
 		return x;
 	}
 

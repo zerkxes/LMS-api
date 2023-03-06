@@ -1,8 +1,8 @@
 package com.zerkxes.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,16 +17,16 @@ public class Books {
 	private String name;
 	private String u_name;
 	private String owner;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private Date b_date;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private Date r_date;
+	@JsonFormat(pattern= "dd-MM-yyyy")
+	private LocalDate b_date;
+	@JsonFormat(pattern= "dd-MM-yyyy")
+	private LocalDate r_date;
 
 	public Books() {
 
 	}
 
-	public Books(int id, String name, String u_name, Date b_date, Date r_date, String owner) {
+	public Books(int id, String name, String u_name, String owner, LocalDate b_date, LocalDate r_date ) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -60,19 +60,19 @@ public class Books {
 		this.u_name = u_name;
 	}
 
-	public Date getB_date() {
+	public LocalDate getB_date() {
 		return b_date;
 	}
 
-	public void setB_date(Date b_date) {
+	public void setB_date(LocalDate b_date) {
 		this.b_date = b_date;
 	}
 
-	public Date getR_date() {
+	public LocalDate getR_date() {
 		return r_date;
 	}
 
-	public void setR_date(Date r_date) {
+	public void setR_date(LocalDate r_date) {
 		this.r_date = r_date;
 	}
 
