@@ -2,6 +2,8 @@ package com.zerkxes.entity;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
@@ -17,16 +19,16 @@ public class Books {
 	private String name;
 	private String u_name;
 	private String owner;
-	@JsonFormat(pattern= "dd-MM-yyyy")
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate b_date;
-	@JsonFormat(pattern= "dd-MM-yyyy")
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate r_date;
 
 	public Books() {
 
 	}
 
-	public Books(int id, String name, String u_name, String owner, LocalDate b_date, LocalDate r_date ) {
+	public Books(int id, String name, String u_name, String owner, LocalDate b_date, LocalDate r_date) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -86,7 +88,7 @@ public class Books {
 
 	@Override
 	public String toString() {
-		return "Books [id=" + id + ", name=" + name + ", u_name=" + u_name + ", owner=" + owner + ", b_date=" + b_date + ", r_date=" + r_date
-				+ "]";
+		return "Books [id=" + id + ", name=" + name + ", u_name=" + u_name + ", owner=" + owner + ", b_date=" + b_date
+				+ ", r_date=" + r_date + "]";
 	}
 }

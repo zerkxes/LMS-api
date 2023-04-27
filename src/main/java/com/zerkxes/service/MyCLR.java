@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.zerkxes.entity.Books;
+import com.zerkxes.entity.Users;
+import com.zerkxes.entity.Users.role;
 
 @Component
 public class MyCLR implements CommandLineRunner {
@@ -19,9 +21,9 @@ public class MyCLR implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//userv.createUser(new Users(1, "aniket", "zerkxes", "$$lausdeo33", role.Librarian, "aniket"));
-		//userv.updateUser(new Users(1, "bose", "zawdwds", "$$lausdeo33", role.Librarian, "aniket"));
-		//userv.createUser(new Users(2, "aniket", "asdaw", "$$lausdeo33", role.Librarian, "aniket"));
+		//userv.createUser(new Users(1, "aniket", "zerkxes", "$$lau", role.Librarian, "aniket"));
+		//userv.updateUser(new Users(1, "bose", "zawdwds", "$$lau", role.Librarian, "aniket"));
+		//userv.createUser(new Users(2, "aniket", "asdaw", "$$lau", role.Librarian, "aniket"));
 		//System.out.println(userv.findById(1));
 		//System.out.println(userv.findByUserName("asdaw"));
 		//System.out.println(userv.listAllUsers("aniket"));
