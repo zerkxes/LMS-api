@@ -26,7 +26,7 @@ public class BookController {
 	}
 
 	@PostMapping(value = "/add/{id}")
-	public Books addBook(@RequestBody Books book, int id) {
+	public Books addBook(@RequestBody Books book,@PathVariable int id) {
 		return bserv.createBook(book);
 	}
 
