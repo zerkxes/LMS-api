@@ -3,31 +3,32 @@ package com.zerkxes.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+@SuppressWarnings("serial")
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class UserNotFoundException extends RuntimeException {
+public class NotFoundException extends RuntimeException {
 
-	public UserNotFoundException() {
+	public NotFoundException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserNotFoundException(String message, Throwable cause, boolean enableSuppression,
+	public NotFoundException(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserNotFoundException(String message, Throwable cause) {
+	public NotFoundException(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserNotFoundException(String message) {
+	public NotFoundException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserNotFoundException(Throwable cause) {
+	public NotFoundException(Throwable cause) {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}

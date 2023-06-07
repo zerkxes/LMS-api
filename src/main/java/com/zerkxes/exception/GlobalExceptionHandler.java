@@ -1,10 +1,12 @@
 package com.zerkxes.exception;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
+@Order(2)
 public class GlobalExceptionHandler {
 	
 	@ExceptionHandler
@@ -13,4 +15,6 @@ public class GlobalExceptionHandler {
 		EdgeCaseErrorResponse error = new EdgeCaseErrorResponse(HttpStatus.FORBIDDEN.value(), "Unhandled Exception. Possible invalid value as input", trace[trace.length-1], System.currentTimeMillis());
 		return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
 	}
+	
+	
 }

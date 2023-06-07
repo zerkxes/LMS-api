@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.zerkxes.entity.Books;
+import com.zerkxes.exception.NotFoundException;
 
 @Repository
 public class BooksRepo {
@@ -32,6 +33,8 @@ public class BooksRepo {
 	}
 
 	public Books findBookById(int id, String owner) {
+		if(id!=(int)id || id <0)
+			throw new NotFoundException("Book Not Found with id : " + id);
 		return repo.queryForObject(findBookById, new BeanPropertyRowMapper<>(Books.class), id, owner);
 	}
 

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.zerkxes.entity.Users;
-import com.zerkxes.exception.UserNotFoundException;
+import com.zerkxes.exception.NotFoundException;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -42,7 +42,7 @@ public class UserRepo {
 	public Users findById(int id) {
 
 		if (eMan.find(Users.class, id) == null)
-			throw new UserNotFoundException("User Not found with id : " + id);
+			throw new NotFoundException("User Not found with id : " + id);
 		else
 			return eMan.find(Users.class, id);
 	}
@@ -51,7 +51,7 @@ public class UserRepo {
 		String query = "select u from Users u where u.u_name = :userName";
 		Users found = eMan.createQuery(query, Users.class).setParameter("userName", u_name).getSingleResult();
 		if(found == null)
-			throw new UserNotFoundException("No user found for given username: " + u_name);
+			throw new NotFoundException("No user found for given username: " + u_name);
 		return found;
 	}
 
