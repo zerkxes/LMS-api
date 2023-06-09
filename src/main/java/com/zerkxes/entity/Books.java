@@ -2,14 +2,15 @@ package com.zerkxes.entity;
 
 import java.time.LocalDate;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Books {
@@ -17,7 +18,9 @@ public class Books {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private String u_name;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private Users user;
 	private String owner;
 	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate b_date;
@@ -28,11 +31,11 @@ public class Books {
 
 	}
 
-	public Books(int id, String name, String u_name, String owner, LocalDate b_date, LocalDate r_date) {
+	public Books(int id, String name, Users user, String owner, LocalDate b_date, LocalDate r_date) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.u_name = u_name;
+		this.user = user;
 		this.owner = owner;
 		this.b_date = b_date;
 		this.r_date = r_date;
@@ -53,13 +56,13 @@ public class Books {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getU_name() {
-		return u_name;
+	@JsonBackReference
+	public Users getUser() {
+		return user;
 	}
 
-	public void setU_name(String u_name) {
-		this.u_name = u_name;
+	public void setUser(Users user) {
+		this.user = user;
 	}
 
 	public LocalDate getB_date() {
@@ -88,7 +91,7 @@ public class Books {
 
 	@Override
 	public String toString() {
-		return "Books [id=" + id + ", name=" + name + ", u_name=" + u_name + ", owner=" + owner + ", b_date=" + b_date
+		return "Books [id=" + id + ", name=" + name + ", user=" + user + ", owner=" + owner + ", b_date=" + b_date
 				+ ", r_date=" + r_date + "]";
 	}
 }

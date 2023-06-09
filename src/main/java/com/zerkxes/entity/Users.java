@@ -1,12 +1,18 @@
 package com.zerkxes.entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Users {
@@ -25,19 +31,11 @@ public class Users {
 	private role type;
 	@Column(name="owner", nullable = true)
 	private String z_owner;
+	@OneToMany(targetEntity=Books.class, mappedBy="user", fetch=FetchType.LAZY)
+	private List<Books> book;
 
 	public Users() {
 
-	}
-
-	public Users(int id, String name, String u_name, String pswrd, role type, String z_owner) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.u_name = u_name;
-		this.pswrd = pswrd;
-		this.type = type;
-		this.z_owner=z_owner;
 	}
 
 	public int getId() {
@@ -87,12 +85,22 @@ public class Users {
 	public void setZ_owner(String z_owner) {
 		this.z_owner = z_owner;
 	}
+	@JsonManagedReference
+	public List<Books> getBook() {
+		return book;
+	}
+
+	public void setBook(List<Books> book) {
+		this.book = book;
+	}
 
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", name=" + name + ", u_name=" + u_name + ", pswrd=" + pswrd + ", type=" + type
-				+ ", z_owner=" + z_owner + "]";
+				+ ", z_owner=" + z_owner + ", book=" + book + "]";
 	}
+
+	
 
 	
 }

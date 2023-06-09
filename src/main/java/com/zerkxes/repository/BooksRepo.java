@@ -21,10 +21,11 @@ public class BooksRepo {
 	private String findBookById = "select * from BOOKS where id=? and owner=?";
 	private String updateBookById = "update BOOKS set b_date=?, name=?, owner=?, r_date=?, u_name=? where id=?";
 	private String deleteBookById = "delete from BOOKS where id=?";
+	private String borrowBook="update BOOKS set user_id=? where id=?";
 
 	public Books createBook(Books book) {
 		repo.update(insertBook, book.getId(),book.getB_date(), book.getName(),  book.getOwner(),book.getR_date(),
-				book.getU_name());
+				book.getUser());
 		return book;
 	}
 
@@ -40,7 +41,12 @@ public class BooksRepo {
 
 	public Books updateBookById(Books book, int id) {
 		repo.update(updateBookById, book.getB_date(), book.getName(),  book.getOwner(),book.getR_date(),
-				book.getU_name(), id);
+				book.getUser(), id);
+		return book;
+	}
+	
+	public Books borrowBooks(int userId, Books book) {
+		repo.update(borrowBook, userId, book.getId());
 		return book;
 	}
 

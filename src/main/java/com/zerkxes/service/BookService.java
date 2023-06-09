@@ -30,6 +30,10 @@ public class BookService {
 		return repo.updateBookById(book, id);
 	}
 	
+	public Books borrowBooks(Books book, int id) {
+		return repo.borrowBooks(id, book);
+	}
+	
 	public Books deleteBookById(int id, String owner) {
 		return repo.deleteById(id, owner);
 	}

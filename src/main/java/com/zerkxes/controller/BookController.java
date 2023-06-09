@@ -29,6 +29,11 @@ public class BookController {
 	public Books addBook(@RequestBody Books book,@PathVariable int id) {
 		return bserv.createBook(book);
 	}
+	
+	@PostMapping(value="/borrow/{userId}")
+	public Books borrowBook(@RequestBody Books book, @PathVariable int userId) {
+		return bserv.borrowBooks(book, userId);
+	}
 
 	@GetMapping(value = "/find/{owner}/{id}")
 	public Books findBookById(@PathVariable String owner, @PathVariable int id) {

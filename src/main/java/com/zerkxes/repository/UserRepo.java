@@ -29,8 +29,9 @@ public class UserRepo {
 		existing.setName(user.getName().trim());
 		existing.setPswrd(user.getPswrd());
 		existing.setType(user.getType());
-		existing.setU_name(user.getU_name().trim());
+		//existing.setU_name(user.getU_name().trim());
 		existing.setZ_owner(user.getZ_owner());
+		existing.setBook(user.getBook());
 		eMan.merge(existing);
 	}
 
