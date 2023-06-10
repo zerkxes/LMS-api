@@ -25,7 +25,7 @@ public class UserService {
 	
 	public Users updateUser(Users user) {
 		repo.updateUser(user);
-		return user;
+		return findById(user.getId());
 	}
 	
 	public Users findById(int id) {

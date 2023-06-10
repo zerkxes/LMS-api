@@ -18,8 +18,8 @@ public class BookService {
 		return repo.createBook(Book);
 	}
 	
-	public List<Books> listAllBooks(String owner) {
-		return repo.listAllBooks(owner);
+	public List<Books> listAllBooks() {
+		return repo.listAllBooks();
 	}
 	
 	public Books findBookById(int id, String owner) {

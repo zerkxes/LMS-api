@@ -17,9 +17,9 @@ public class BooksRepo {
 	private JdbcTemplate repo;
 
 	private String insertBook = "insert into BOOKS values(?,?,?,?,?,?)";
-	private String listAllBooks = "select * from BOOKS where owner=?";
+	private String listAllBooks = "select * from BOOKS";
 	private String findBookById = "select * from BOOKS where id=? and owner=?";
-	private String updateBookById = "update BOOKS set b_date=?, name=?, owner=?, r_date=?, u_name=? where id=?";
+	private String updateBookById = "update BOOKS set b_date=?, name=?, owner=?, r_date=? where id=?";
 	private String deleteBookById = "delete from BOOKS where id=?";
 	private String borrowBook="update BOOKS set user_id=? where id=?";
 
@@ -29,8 +29,8 @@ public class BooksRepo {
 		return book;
 	}
 
-	public List<Books> listAllBooks(String owner) {
-		return repo.query(listAllBooks, new BeanPropertyRowMapper<>(Books.class), owner);
+	public List<Books> listAllBooks() {
+		return repo.query(listAllBooks, new BeanPropertyRowMapper<>(Books.class));
 	}
 
 	public Books findBookById(int id, String owner) {
@@ -40,8 +40,7 @@ public class BooksRepo {
 	}
 
 	public Books updateBookById(Books book, int id) {
-		repo.update(updateBookById, book.getB_date(), book.getName(),  book.getOwner(),book.getR_date(),
-				book.getUser(), id);
+		repo.update(updateBookById, book.getB_date(), book.getName(),  book.getOwner(),book.getR_date(),id);
 		return book;
 	}
 	
