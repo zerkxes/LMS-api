@@ -21,7 +21,8 @@ public class UserRepo {
 	public void createUser(Users user) {
 		user.setName(user.getName().trim());
 		user.setU_name(user.getU_name().trim());
-		eMan.merge(user);
+		eMan.persist(user);
+		//eMan.merge(user);
 	}
 
 	public void updateUser(Users user) {
