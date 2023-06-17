@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zerkxes.entity.Books;
-import com.zerkxes.repository.BooksRepo;
+import com.zerkxes.repository.BooksRepoImpl;
 
 @Service
-public class BookService {
+public class BookServiceImpl {
 	
 	@Autowired
-	private BooksRepo repo;
+	private BooksRepoImpl repo;
 	
 	public Books createBook(Books Book) {
 		return repo.createBook(Book);
@@ -32,6 +32,10 @@ public class BookService {
 	
 	public Books borrowBooks(Books book, int id) {
 		return repo.borrowBooks(id, book);
+	}
+	
+	public void returnBooks(int userId, int bookId) {
+		repo.returnBooks(userId, bookId);
 	}
 	
 	public Books deleteBookById(int id, String owner) {

@@ -13,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Users {
@@ -22,6 +23,7 @@ public class Users {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Size(min=0)
 	private int id;
 	private String name;
 	@Column(unique=true)
@@ -98,6 +100,17 @@ public class Users {
 	public String toString() {
 		return "Users [id=" + id + ", name=" + name + ", u_name=" + u_name + ", pswrd=" + pswrd + ", type=" + type
 				+ ", z_owner=" + z_owner + ", book=" + book + "]";
+	}
+
+	public Users(int id, String name, String u_name, String pswrd, role type, String z_owner, List<Books> book) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.u_name = u_name;
+		this.pswrd = pswrd;
+		this.type = type;
+		this.z_owner = z_owner;
+		this.book = book;
 	}
 
 	

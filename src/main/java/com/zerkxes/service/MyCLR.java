@@ -14,10 +14,10 @@ import com.zerkxes.entity.Users.role;
 public class MyCLR implements CommandLineRunner {
 	
 	@Autowired
-	private UserService userv;
+	private UserServiceImpl userv;
 	
 	@Autowired
-	private BookService bserv;
+	private BookServiceImpl bserv;
 
 	@Override
 	public void run(String... args) throws Exception {
