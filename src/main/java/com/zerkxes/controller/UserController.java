@@ -2,6 +2,7 @@ package com.zerkxes.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,24 +12,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zerkxes.entity.Users;
 
+import jakarta.validation.Valid;
+
 @RequestMapping("/user")
 public interface UserController {
 
 	@GetMapping(value = "/list/{owner}")
-	public List<Users> listAllUsers(@PathVariable String owner);
+	public ResponseEntity<List<Users>> listAllUsers(@PathVariable String owner);
 
 	@GetMapping(value = "/findById/{id}")
-	public Users findUserById(@PathVariable int id);
+	public ResponseEntity<Users> findUserById(@PathVariable int id);
 
 	@GetMapping(value = "/findByUser/{u_name}")
-	public Users findUserByUserName(@PathVariable String u_name);
+	public ResponseEntity<Users> findUserByUserName(@PathVariable String u_name);
 
 	@PostMapping(value = "/create/")
-	public Users createUser(@RequestBody Users user);
+	public ResponseEntity<Users> createUser(@Valid @RequestBody Users user);
 
 	@PostMapping(value = "/update/")
-	public Users updateUser(@RequestBody Users user);
+	public ResponseEntity<Users> updateUser(@Valid @RequestBody Users user);
 
 	@DeleteMapping(value = "/delete/{id}")
-	public Users deleteUser(@PathVariable int id);
+	public ResponseEntity<Users> deleteUser(@PathVariable int id);
 }

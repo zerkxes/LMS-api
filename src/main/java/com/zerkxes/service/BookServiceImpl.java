@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zerkxes.entity.Books;
-import com.zerkxes.repository.BooksRepoImpl;
+import com.zerkxes.repository.BooksRepo;
 
 @Service
-public class BookServiceImpl {
+public class BookServiceImpl implements BookService {
 	
 	@Autowired
-	private BooksRepoImpl repo;
+	private BooksRepo repo;
 	
 	public Books createBook(Books Book) {
 		return repo.createBook(Book);

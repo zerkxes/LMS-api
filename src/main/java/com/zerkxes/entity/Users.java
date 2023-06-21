@@ -13,6 +13,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -24,10 +26,14 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Size(min=0)
+	@NotNull
 	private int id;
+	@NotBlank
 	private String name;
 	@Column(unique=true)
+	@NotNull
 	private String u_name;
+	@NotNull
 	private String pswrd;
 	@Enumerated(EnumType.STRING)
 	private role type;

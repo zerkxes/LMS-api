@@ -10,7 +10,10 @@ import org.springframework.stereotype.Repository;
 import com.zerkxes.entity.Books;
 import com.zerkxes.exception.NotFoundException;
 
+import jakarta.transaction.Transactional;
+
 @Repository
+@Transactional
 public class BooksRepoImpl implements BooksRepo{
 
 	@Autowired

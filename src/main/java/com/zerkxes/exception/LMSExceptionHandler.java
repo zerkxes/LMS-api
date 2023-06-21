@@ -13,7 +13,7 @@ import jakarta.persistence.NoResultException;
 import jakarta.persistence.TransactionRequiredException;
 @ControllerAdvice
 @Order(1)
-public class UserExceptionHandler {
+public class LMSExceptionHandler {
 	
 	@ExceptionHandler(value = NotFoundException.class)
 	public ResponseEntity<UserErrorResponse> handleUserNotFoundException(NotFoundException exp) {
